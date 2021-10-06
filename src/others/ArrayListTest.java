@@ -33,3 +33,4 @@ LinkedList : 똑같은 일을 하지만, 주소값을 하나 만들어 삽입하
  */
 //List는 객체이니까 list.size()를 통해 길이를 알수있다.
 //ArrayList객체내에 size메소드가 있어서 객체내의 배열크기를 리턴해준다
+//List.get(i) i번째 값을 가져와라
