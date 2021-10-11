@@ -1,0 +1,41 @@
+CREATE TABLE t_customer(
+	cid INT UNSIGNED AUTO_INCREMENT,
+	fn VARCHAR(10) NOT NULL,
+	sn VARCHAR(10) NOT NULL,
+	PRIMARY KEY(cid)
+	);
+	
+DROP TABLE t_customer;
+
+CREATE TABLE t_telenum(
+	tid INT UNSIGNED AUTO_INCREMENT,
+	cid INT UNSIGNED ,
+	tn VARCHAR(20) NOT NULL,
+	PRIMARY KEY(tid,cid),
+	FOREIGN KEY(cid) REFERENCES t_customer(cid)
+	);
+
+DROP TABLE t_telenum;	
+	
+INSERT INTO t_customer
+(fn,sn)
+VALUES
+('Pooja','Singh'),	
+('San','Zhang'),	
+('John','Doe');
+
+INSERT INTO t_telenum
+(cid,tn)
+VALUES
+(1,'555-861-2025'),
+(1,'555-21321-2025'),
+(2,'123-861-2025'),
+(3,'32-82131-2213'),
+(3,'3-821-2021'),
+(3,'2-861-2025');
+
+		
+SELECT A.cid,A.fn,A.sn,B.tid,B.tn
+FROM t_customer A
+INNER JOIN t_telenum B
+ON A.cid = B.cid;
