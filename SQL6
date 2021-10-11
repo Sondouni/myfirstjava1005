@@ -1,0 +1,24 @@
+CREATE INDEX idx_student_age
+ON t_student2 (age);
+
+DROP INDEX idx_student_age
+ON t_student2;
+
+SHOW INDEX FROM t_student2;
+
+ -- primary key
+ -- unique
+ -- not null
+ -- index
+
+CREATE VIEW view_joinresult
+AS
+SELECT B.nm,A.sno,A.hno,C.hn
+FROM t_studenthobby A
+INNER JOIN t_student2 B
+ON A.sno = B.sno
+INNER JOIN t_hobby C
+ON A.hno = C.hno
+;
+
+SELECT * FROM view_joinresult;
