@@ -1,0 +1,42 @@
+CREATE TABLE t_m_c(
+	inum INT UNSIGNED AUTO_INCREMENT,
+	manufacturer VARCHAR(20) NOT NULL,
+	country VARCHAR(15) NOT NULL,
+	PRIMARY KEY(inum)
+);
+
+DROP TABLE t_m_c;
+
+CREATE TABLE t_model(
+	mdid INT UNSIGNED AUTO_INCREMENT,
+	inum INT UNSIGNED ,
+	model VARCHAR(20) NOT NULL,
+	fullmodel VARCHAR(20) NOT NULL,
+	PRIMARY KEY(mdid,inum),
+	FOREIGN KEY(inum) REFERENCES t_m_c(inum)
+	);	
+	
+DROP TABLE t_model;
+
+CREATE TABLE t_company(
+	empNum INT UNSIGNED AUTO_INCREMENT,
+	lastName VARCHAR(10) NOT NULL,
+	firstName VARCHAR(10) NOT NULL,
+	deptCity VARCHAR(10) NOT NULL,
+	deptCountry VARCHAR(10) NOT NULL,
+	PRIMARY KEY(empNum)
+);
+	
+CREATE TABLE t_department(
+	depNum INT UNSIGNED AUTO_INCREMENT,
+	deptName VARCHAR(10) NOT NULL,
+	PRIMARY KEY(depNum)
+);
+
+CREATE TABLE t_com_dep(
+	depNum INT UNSIGNED,	
+	empNum INT UNSIGNED,
+	PRIMARY KEY (depNum,empNum),
+	FOREIGN KEY (empNum) REFERENCES t_company (empNum),
+	FOREIGN KEY (depNum) REFERENCES t_department (depNum)
+);	
